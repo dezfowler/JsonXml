@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="JsonXml"
+    targetNamespace="http://www.json.net/xml"
+    elementFormDefault="qualified"
+    xmlns="http://www.json.net/xml"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:jxml="http://www.xmlsh.org/jxml"
+>
+  <xs:import namespace="http://www.xmlsh.org/jxml" schemaLocation="jxml.xsd"/>
+  
+  <xs:element name="integer" type="xs:integer" substitutionGroup="jxml:value"/>   
+  <xs:element name="dateTime" type="xs:dateTime" substitutionGroup="jxml:value"/>
+  <xs:element name="dateTimeOffset" type="xs:dateTime" substitutionGroup="jxml:value"/>
+  <xs:element name="bytes" type="xs:base64Binary" substitutionGroup="jxml:value"/>
+  <xs:element name="duration" type="xs:duration" substitutionGroup="jxml:value"/>
+  <xs:element name="uri" type="xs:anyURI" substitutionGroup="jxml:value"/>
+  <xs:element name="uuid" type="xs:string" substitutionGroup="jxml:value"/> 
+    
+</xs:schema>
+

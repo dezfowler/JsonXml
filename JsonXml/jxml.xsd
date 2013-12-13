@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!--
+This is an amended version of this schema which is more strict and won't 
+allow a "member" tag anywhere other than immediately inside an "object" tag.
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.xmlsh.org/jxml" xmlns="http://www.xmlsh.org/jxml">
+	<xsd:element name="object" substitutionGroup="value">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="member" type="member"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="member">
+		<xsd:sequence>
+			<xsd:element ref="value"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" use="required"/>
+	</xsd:complexType>
+
+	<xsd:element name="array" substitutionGroup="value">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="value"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="string" type="xsd:string" substitutionGroup="value"/>
+	<xsd:element name="number" type="xsd:double" substitutionGroup="value"/>
+	<xsd:element name="boolean" type="xsd:boolean" substitutionGroup="value"/>
+	<xsd:element name="null" substitutionGroup="value">
+		<xsd:complexType>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="value" abstract="true"/>
+
+
+</xsd:schema>
