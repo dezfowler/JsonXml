@@ -103,6 +103,11 @@ namespace JsonXml
 
         public JToken ToJToken(XNode xnode)
         {
+            if (xnode.NodeType == XmlNodeType.Document)
+            {
+                return ToJToken(((XDocument)xnode).Root);
+            }
+
             if (xnode.NodeType != XmlNodeType.Element) throw new Exception("Unexpected node type");
 
             var xelm = (XElement)xnode;
